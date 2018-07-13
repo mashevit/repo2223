@@ -176,19 +176,14 @@
 							<strong>Picture added:</strong>
 						</div>
 						<div class="col-sm-7">
-<c:if test="${stp ne 1}">
+<c:if test="${stp eq 2}">
 							<%
 								String action = request.getParameter("todo");
-													Bla15 td = (Bla15) session.getAttribute("todo");
+													Stac td = (Stac) session.getAttribute("td");
 													if (td == null) {
 														try {
-															final Properties jndiProps = new Properties();
-
-															jndiProps.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-															InitialContext ctx = new InitialContext(jndiProps);
-															td = (Bla15) ctx.lookup("ejb:mywb2-0.0.1-SNAPSHOT/Bla11!Imgg.Bla11?stateful");
-															//	td = new ImgB();
-															session.setAttribute("todo", td);
+														    td =new Stac();
+															session.setAttribute("td", td);
 														} catch (Exception ex) {
 															ex.printStackTrace();
 														}
@@ -223,10 +218,10 @@
 
 														} else if ("todb".equals(action)) {
 															RequestDispatcher rd = request.getRequestDispatcher("/EditorController");
-															request.setAttribute("td", td);
+															//request.setAttribute("td", td);
 															request.setAttribute("action", action);
-															/*    request.setAttribute("trp", (String)(session.getAttribute("tri")+""));
-															*/ session.removeAttribute("todo");
+															request.setAttribute("td1",td);															/*    request.setAttribute("trp", (String)(session.getAttribute("tri")+""));
+															*/ //session.removeAttribute("todo");
 															rd.forward(request, response);
 														} else if ("remove".equals(action)) {
 															String item = request.getParameter("itemnum");
